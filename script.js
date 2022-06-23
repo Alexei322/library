@@ -32,10 +32,11 @@ function displayNewBook(aBook) {
     pagesDiv.classList.add('booknumberofpages');
     const readDiv = document.createElement('div');
     readDiv.classList.add('bookhasread');
-    authorDiv.textContent = aBook.author;
-    titleDiv.textContent = aBook.title;
-    pagesDiv.textContent = aBook.numberOfPages;
-    readDiv.textContent = aBook.numberOfPages;
+    authorDiv.textContent = `Author: ${aBook.author}`;
+    titleDiv.textContent = `Title: ${aBook.title}`;
+    pagesDiv.textContent = `Number of pages: ${aBook.numberOfPages}`;
+    isOrNotRead = aBook.isRead === 'true' ? 'Read' : 'Not Read';
+    readDiv.textContent = `Is the book read?: ${isOrNotRead}`;
     bookDiv.appendChild(authorDiv);
     bookDiv.appendChild(titleDiv);
     bookDiv.appendChild(pagesDiv);

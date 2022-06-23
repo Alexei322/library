@@ -16,7 +16,7 @@
             <div class="formheading">
                 Enter details of your book!
             </div>
-            <label for="author">Enter the author:</label>
+            <label for="author" id="toplabel">Enter the author:</label>
             <input type="text" id="author" name="author" required>
             <label for="title">Enter the book title:</label>
             <input type="text" id="title" name="title" required>
@@ -24,7 +24,7 @@
             <input type="number" id="numberofpages" name="numberofpages" required>
             <fieldset>
                 <legend>Have you read the book?</legend>
-                <input type="radio" name = "hasread" id="yes" value="true">
+                <input type="radio" name = "hasread" id="yes" value="true" required>
                 <label for="yes">Yes</label>
                 <input type="radio" name="hasread" id="no" value="false">
                 <label for="no">No</label>
@@ -32,19 +32,11 @@
             <button type="submit">Submit</button>
         </form>
         <div class="books">
-            <div class="book">
-                <div class="bookauthor">
-                    name
-                </div>
-                <div class="booktitle">
-                    title book
-                </div>
-                <div class="booknumberofpages">
-                    252
-                </div>
-                <div class="bookhasread">
-                    Yep
-                </div>
+            <!-- <div class="book">
+                Your books will start to appear here!
+            </div> -->
+            <div class="filler">
+                <h1>Your books will appear here!</h1>
             </div>
         </div>
     </div>
