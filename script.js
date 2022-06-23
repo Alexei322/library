@@ -6,6 +6,7 @@ function Book(author = '', title = '', numberOfPages = 0, isRead = false) {
     this.title = title;
     this.numberOfPages = numberOfPages;
     this.isRead = isRead;
+    this.identifier = myLibrary.length;
 };
 
 function addBookToLibrary() {
@@ -32,16 +33,25 @@ function displayNewBook(aBook) {
     pagesDiv.classList.add('booknumberofpages');
     const readDiv = document.createElement('div');
     readDiv.classList.add('bookhasread');
+    const deleteButton = document.createElement('button');
+    deleteButton.classList.add('deletebutton');
+    deleteButton.textContent = 'Delete';
     authorDiv.textContent = `Author: ${aBook.author}`;
     titleDiv.textContent = `Title: ${aBook.title}`;
     pagesDiv.textContent = `Number of pages: ${aBook.numberOfPages}`;
     isOrNotRead = aBook.isRead === 'true' ? 'Read' : 'Not Read';
     readDiv.textContent = `Is the book read?: ${isOrNotRead}`;
+    bookDiv.data = aBook;
     bookDiv.appendChild(authorDiv);
     bookDiv.appendChild(titleDiv);
     bookDiv.appendChild(pagesDiv);
     bookDiv.appendChild(readDiv);
+    bookDiv.appendChild(deleteButton);
     books.appendChild(bookDiv);
+    deleteButton.addEventListener('click', function(e) {
+        parentBook = deleteButton.closest('.book');
+        console.log(parentBook.data);
+    });
 };
 
 function clearChildren() {
@@ -54,7 +64,8 @@ function clearChildren() {
 overlaySelect = document.querySelector('.overlay');
 cancelButton = document.querySelector('.form > .cancelAdd');
 formSelector = document.querySelector('.form');
-loadFormButtonSelect = document.querySelector('.loadformbutton')
+loadFormButtonSelect = document.querySelector('.loadformbutton');
+deleteItemButtonSelect = document.querySelector('.deletebutton');
 loadFormButtonSelect.addEventListener('click', function(e) {
     formSelector.style.display = 'flex';
     loadFormButtonSelect.style.display = 'none';
@@ -77,3 +88,6 @@ myForm.addEventListener('submit', function(e) {
     addBookToLibrary();
     resetForm();
 });
+
+
+

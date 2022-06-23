@@ -11,6 +11,10 @@
     position: relative;
 }
 
+.heading {
+    height: 5rem;
+}
+
 button {
     border: none;
     margin-top: 1rem;
@@ -27,6 +31,15 @@ button:active {
     height: 2.2rem;
     width: 5.2rem;
     transition:1ms;
+}
+
+.deletebutton {
+    height: 2rem;
+    width: 5rem;
+}
+
+.deletebutton:hover {
+    background-color: darkred;
 }
 
 .overlay {
@@ -50,8 +63,7 @@ button:active {
 }
 
 .book {
-    display: flex;
-    flex-direction: column;
+   
 }
 
 #toplabel {
@@ -89,3 +101,4 @@ input[type="radio"] {
     height: 1rem;
     border: 0.15em solid currentColor;
 }
+
