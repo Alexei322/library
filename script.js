@@ -51,19 +51,17 @@ function clearChildren() {
     }
 };
 
+formSelector = document.querySelector('.form');
+loadFormButtonSelect = document.querySelector('.loadformbutton')
+loadFormButtonSelect.addEventListener('click', function(e) {
+    formSelector.style.display = 'flex';
+    loadFormButtonSelect.style.display = 'none';
+});
+
 myForm.addEventListener('submit', function(e) {
     e.preventDefault();
     addBookToLibrary();
+    formSelector.style.display = 'none';
+    formSelector.reset();
+    loadFormButtonSelect.style.display = 'block';
 });
-
-
-
-
-
-// addBookToLibrary();
-// const domBooks = document.querySelector('.books');
-// const bookDiv = document.createElement('div');
-// bookDiv.classList.add('book');
-// bookDiv.appendChild(document.createElement('div'));
-// bookDiv.firstChild.classList.add('author');
-// domBooks.appendChild(bookDiv);
