@@ -51,17 +51,29 @@ function clearChildren() {
     }
 };
 
+overlaySelect = document.querySelector('.overlay');
+cancelButton = document.querySelector('.form > .cancelAdd');
 formSelector = document.querySelector('.form');
 loadFormButtonSelect = document.querySelector('.loadformbutton')
 loadFormButtonSelect.addEventListener('click', function(e) {
     formSelector.style.display = 'flex';
     loadFormButtonSelect.style.display = 'none';
+    overlaySelect.style.display = 'block';
+});
+
+function resetForm() {
+    formSelector.style.display = 'none'; 
+    formSelector.reset();
+    loadFormButtonSelect.style.display = 'block';
+    overlaySelect.style.display = 'none';
+}
+
+cancelButton.addEventListener('click', () => {
+    resetForm();
 });
 
 myForm.addEventListener('submit', function(e) {
     e.preventDefault();
     addBookToLibrary();
-    formSelector.style.display = 'none';
-    formSelector.reset();
-    loadFormButtonSelect.style.display = 'block';
+    resetForm();
 });
