@@ -34,18 +34,20 @@ function displayNewBook(aBook) {
     const deleteButton = document.createElement('button');
     deleteButton.classList.add('deletebutton');
     deleteButton.textContent = 'Delete';
+    const changeButton = document.createElement('button');
+    changeButton.textContent = 'Change read status';
     authorDiv.textContent = `Author: ${aBook.author}`;
     titleDiv.textContent = `Title: ${aBook.title}`;
     pagesDiv.textContent = `Number of pages: ${aBook.numberOfPages}`;
-    isOrNotRead = aBook.isRead === 'true' ? 'Read' : 'Not Read';
+    isOrNotRead = aBook.isRead === true ? 'Read' : 'Not Read';
     readDiv.textContent = `Is the book read?: ${isOrNotRead}`;
     bookDiv.data = aBook.identifier;
-    console.log(bookDiv.data);
     bookDiv.appendChild(authorDiv);
     bookDiv.appendChild(titleDiv);
     bookDiv.appendChild(pagesDiv);
     bookDiv.appendChild(readDiv);
     bookDiv.appendChild(deleteButton);
+    bookDiv.appendChild(changeButton);
     books.appendChild(bookDiv);
     deleteButton.addEventListener('click', function(e) {
         parentBook = deleteButton.closest('.book');
@@ -59,6 +61,15 @@ function displayNewBook(aBook) {
         console.log(allBooks);
         clearChildren();
         myLibrary.forEach(libraryItem => displayNewBook(libraryItem));
+    });
+    changeButton.addEventListener('click', function(e) {
+        parentBook = deleteButton.closest('.book');
+        removeditemIndex = parentBook.data;
+        itemInLibrary = myLibrary[removeditemIndex];
+        itemInLibrary.isRead = itemInLibrary.isRead === true ? false : true;
+        isOrNotRead = itemInLibrary.isRead === true ? 'Read' : 'Not Read';
+        readDiv.textContent = `Is the book read?: ${isOrNotRead}`;
+        console.log(1);
     });
 };
 
@@ -96,6 +107,4 @@ myForm.addEventListener('submit', function(e) {
     addBookToLibrary();
     resetForm();
 });
-
-
 
