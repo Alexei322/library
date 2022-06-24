@@ -1,6 +1,5 @@
 let myLibrary = [];
 
-
 function Book(author = '', title = '', numberOfPages = 0, isRead = false) {
     this.author = author;
     this.title = title;
@@ -17,8 +16,7 @@ function addBookToLibrary() {
     };
     userBook = new Book(formPairs.author, formPairs.title, formPairs.numberofpages, formPairs.hasread);
     myLibrary.push(userBook);
-    clearChildren();
-    myLibrary.forEach(item => displayNewBook(item));
+    displayNewBook(userBook);
 };
 
 function displayNewBook(aBook) {
@@ -41,7 +39,8 @@ function displayNewBook(aBook) {
     pagesDiv.textContent = `Number of pages: ${aBook.numberOfPages}`;
     isOrNotRead = aBook.isRead === 'true' ? 'Read' : 'Not Read';
     readDiv.textContent = `Is the book read?: ${isOrNotRead}`;
-    bookDiv.data = aBook;
+    bookDiv.data = aBook.identifier;
+    console.log(bookDiv.data);
     bookDiv.appendChild(authorDiv);
     bookDiv.appendChild(titleDiv);
     bookDiv.appendChild(pagesDiv);
@@ -51,6 +50,15 @@ function displayNewBook(aBook) {
     deleteButton.addEventListener('click', function(e) {
         parentBook = deleteButton.closest('.book');
         console.log(parentBook.data);
+        removeditemIndex = parentBook.data;
+        for (let index = removeditemIndex + 1; index < myLibrary.length; index++) {
+            myLibrary[index].identifier --;
+        };
+        myLibrary.splice(removeditemIndex, 1);
+        allBooks = [...document.querySelectorAll('.book')];
+        console.log(allBooks);
+        clearChildren();
+        myLibrary.forEach(libraryItem => displayNewBook(libraryItem));
     });
 };
 
